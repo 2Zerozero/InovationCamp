@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import * as S from './components/Layout/style.js'
 import Header from './components/Header/Header';
 import Form from './components/Form/Form';
 import Container from './components/Container/Container';
@@ -10,7 +11,7 @@ function App() {
 
   console.log(todos)
   return (
-    <div className="layout">
+    <S.Layout>
 
       {/* header */}
       <Header />
@@ -27,7 +28,7 @@ function App() {
         setTodos={setTodos}
       />
 
-    </div>
+    </S.Layout>
   );
 }
 
