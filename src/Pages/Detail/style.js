@@ -25,6 +25,8 @@ export const Item = styled.div`
             height: 40px;
             border: none;
             border-radius: 8px;
+            background-color: #4169E1;
+            color: #F0F8FF;
         }
     }
 

@@ -21,7 +21,7 @@ function Todo ({todos, isDone}) {
         {todos.filter((todo) => todo.isDone === isDone).map((todo) => {
             return (
             <S.Todo key={todo.id}>
-                <Link to={`/${todo.id}`}>상세보기</Link>
+                <Link to={`/${todo.id}`}><S.More>상세보기</S.More></Link>
                 <h2>{todo.title}</h2>
                 <p>{todo.content}</p>
                 <S.Buttons>
@@ -36,3 +36,4 @@ function Todo ({todos, isDone}) {
 }
 
 export default Todo;
+
