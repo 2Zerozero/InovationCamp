@@ -5,6 +5,8 @@
 04. Reducer : dispatch.action 의 호출결과로 실행될 로직을 기록
 */
 
+import shortid from "shortid"
+
 // 01. Action key
 const ADD_TODO = "ADD_TODO"
 const DELETE_TODO = "DELETE_TODO"
@@ -29,19 +31,19 @@ export const update_todo = (payload) => ({
 // 03. initial State
 const initialState = [
     {
-        id: 1,
+        id: shortid.generate(),
         title: "리덕스는 어려워(1)",
         content: "진짜 어렵지..",
         isDone: false,
     },
     {
-        id: 2,
+        id: shortid.generate(),
         title: "리덕스는 어려워(2)",
         content: "진짜 어렵지..",
         isDone: false,
     },
     {
-        id: 3,
+        id: shortid.generate(),
         title: "리덕스는 어려워(3)",
         content: "진짜 어렵지..",
         isDone: false,
@@ -52,11 +54,19 @@ const initialState = [
 const todoReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            return state
+            return [...state, action.payload]
         case DELETE_TODO:
-            return state
+            return state.filter(todo => todo.id !== action.payload)
         case UPDATE_TODO:
-            return state
+            return state.map(todo => {
+                if(todo.id === action.payload) {
+                    return {
+                        ...todo,
+                        isDone: !todo.isDone
+                    };
+                }
+                return todo;
+            });
         default:
             return state
     }
