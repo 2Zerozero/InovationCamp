@@ -5,6 +5,11 @@ export const Todolist = styled.div`
     flex-wrap: wrap;
     gap: 20px;
     min-height: 205px;
+
+    a {
+        font-size: 12px;
+        
+    }
 `
 
 export const Todo = styled.div`
