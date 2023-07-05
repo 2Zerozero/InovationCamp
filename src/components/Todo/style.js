@@ -4,11 +4,12 @@ export const Todolist = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    min-height: 205px;
+    min-height: 221px;
 
     a {
         font-size: 12px;
-        
+        color: #ff0000;
+        text-decoration: none;
     }
 `
 

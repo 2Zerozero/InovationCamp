@@ -11,7 +11,7 @@ export const Wrap = styled.div`
 
 export const Item = styled.div`
     height: 360px;
-    border: 2px solid #000000;
+    border: 2px solid #eee;
     border-radius: 12px;
     padding: 20px;
 
@@ -23,6 +23,7 @@ export const Item = styled.div`
         button {
             width: 120px;
             height: 40px;
+            border: none;
             border-radius: 8px;
         }
     }

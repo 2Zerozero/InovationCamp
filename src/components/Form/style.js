@@ -12,7 +12,7 @@ export const Form = styled.form`
         height: 40px;
         border: none;
         border-radius: 12px;
-        background-color: #4dbe8f;
+        background-color: #3f3f3f;
         color: #ffffff;
     }
 `
