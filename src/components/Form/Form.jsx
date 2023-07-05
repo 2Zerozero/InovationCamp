@@ -1,22 +1,28 @@
 import { useState } from 'react';
 import * as S from './style.js'
-import uuid from 'react-uuid';
+import { useDispatch } from 'react-redux';
+import { add_todo } from '../../redux/modules/todoReducer.js';
+import shortid from 'shortid';
 
-function Form({todos, setTodos}) {
+function Form() {
     // State
     const [inputTitle, setInputTitle] = useState('');
     const [inputContent, setInputContent] = useState('');
 
+    // dispatch
+    const dispatch = useDispatch();
+
     // Submit
     const onClickSubmit = (e) => {
         e.preventDefault();
-        const newTodo = ({
-            id: uuid(),
-            title: inputTitle,
-            content: inputContent,
-            state: false,
-        });
-        setTodos([...todos, newTodo])
+        dispatch(add_todo(
+            {
+                id: shortid.generate(),
+                title: inputTitle,
+                content: inputContent,
+                isDone: false,
+            }
+        ));
         setInputTitle('');
         setInputContent('');
     }

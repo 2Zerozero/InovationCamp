@@ -1,15 +1,17 @@
+import { useSelector } from "react-redux";
 import Todo from "../Todo/Todo";
 import * as S from "./style.js"
 
-function Container ({todos, setTodos}) {
+function Container () {
+    // UseSelector
+    const todos = useSelector(store => store.todoReducer)
     return (
         <S.Container>
             <div className="working">
                 <h2>Working .. 🔥</h2>
                 <Todo
                     todos={todos}
-                    setTodos={setTodos}
-                    state={false}
+                    isDone={false}
                 />
             </div>
 
@@ -17,8 +19,7 @@ function Container ({todos, setTodos}) {
                 <h2>Done .. 🎉</h2>
                 <Todo
                     todos={todos}
-                    setTodos={setTodos}
-                    state={true}
+                    isDone={true}
                 />
             </div>
         </S.Container>

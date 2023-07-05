@@ -1,35 +1,32 @@
+import { useDispatch } from 'react-redux';
 import * as S from './style.js'
+import { delete_todo, update_todo } from '../../redux/modules/todoReducer.js';
+import { Link } from 'react-router-dom';
 
-function Todo ({todos, setTodos, state}) {
+function Todo ({todos, isDone}) {
+    // Dispatch
+    const dispatch = useDispatch();
+
     // Button 기능
     const onClickStateChangeButton = (id) => {
-        const updateTodos = todos.map((todo) => {
-            if(todo.id === id) {
-                return {
-                    ...todo,
-                    state: !todo.state,
-                };
-            }
-            return todo;
-        })
-        setTodos(updateTodos);
+        dispatch(update_todo(id));
     }
     
     const onClickDeleteButton = (id) => {
-        const deleteTodos = todos.filter((todo) => todo.id !== id);
-        setTodos(deleteTodos);
+        dispatch(delete_todo(id));
     }
 
     return (
         <S.Todolist>
-        {todos.filter((todo) => todo.state === state).map((todo) => {
+        {todos.filter((todo) => todo.isDone === isDone).map((todo) => {
             return (
-            <S.Todo>
+            <S.Todo key={todo.id}>
+                <Link to={`/${todo.id}`}>상세보기</Link>
                 <h2>{todo.title}</h2>
                 <p>{todo.content}</p>
                 <S.Buttons>
                     <button onClick={() => onClickDeleteButton(todo.id)}>삭제하기</button>
-                    <button onClick={() => onClickStateChangeButton(todo.id)}>{todo.state ? "취소" : "완료"}</button>
+                    <button onClick={() => onClickStateChangeButton(todo.id)}>{todo.isDone ? "취소" : "완료"}</button>
                 </S.Buttons>
             </S.Todo>
             )
