@@ -4,7 +4,7 @@ export const Todolist = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    min-height: 221px;
+    min-height: 233px;
 
     a {
         font-size: 12px;
