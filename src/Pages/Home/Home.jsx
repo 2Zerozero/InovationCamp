@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from '../components/Header/Header';
-import Form from '../components/Form/Form';
-import Container from '../components/Container/Container';
-import * as S from '../components/Layout/style'
+import Header from '../../components/Header/Header';
+import Form from '../../components/Form/Form';
+import Container from '../../components/Container/Container';
+import * as S from './style'
 
 
 function Home() {

@@ -10,7 +10,7 @@ export const Wrap = styled.div`
 `
 
 export const Item = styled.div`
-    height: 360px;
+    min-height: 360px;
     border: 2px solid #eee;
     border-radius: 12px;
     padding: 20px;
@@ -25,6 +25,8 @@ export const Item = styled.div`
             height: 40px;
             border: none;
             border-radius: 8px;
+            background-color: #4169E1;
+            color: #F0F8FF;
         }
     }
 
@@ -33,3 +35,10 @@ export const Item = styled.div`
     }
 `
 
+export const ImgLayout = styled.figure`
+    margin: 0 auto;
+    width: 200px;
+    img {
+        width: 100%;
+    }
+`

@@ -5,15 +5,19 @@ export const Form = styled.form`
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-    background-color: #eee;
+    background-color: #D5E5F2;
+    border-radius: 10px;
     
     button {
         width: 140px;
         height: 40px;
         border: none;
         border-radius: 12px;
-        background-color: #3f3f3f;
-        color: #ffffff;
+        background-color: #4169E1;
+        color: #F0F8FF;
+        cursor: pointer;
+        &:hover{background-color: #F0F8FF;
+            color: #4169E1;}
     }
 `
 
