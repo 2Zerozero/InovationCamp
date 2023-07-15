@@ -1,4 +1,5 @@
 import './App.css';
+import Login from './components/Login';
 import Nav from "./components/Nav";
 import Taps from './components/Taps';
 
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Nav/>
       <Taps/>
+      <Login />
     </div>
   );
 }
