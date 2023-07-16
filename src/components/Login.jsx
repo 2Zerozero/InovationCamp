@@ -11,7 +11,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { useState } from 'react';
-import { Padding } from '@mui/icons-material';
 import {CgMathPlus} from "react-icons/cg"
 
 function Login() {

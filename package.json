@@ -18,6 +18,7 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "react-query": "^3.39.3",
     "react-redux": "^8.1.1",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
@@ -47,5 +48,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "json-server": "^0.17.3",
+    "npm": "^9.8.0"
   }
 }
