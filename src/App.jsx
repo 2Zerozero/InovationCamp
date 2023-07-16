@@ -1,5 +1,5 @@
 import './App.css';
-import Login from './components/Login';
+import Login from './components/Login/Login';
 import Nav from "./components/Nav";
 import Taps from './components/Taps';
 
