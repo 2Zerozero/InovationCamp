@@ -1,23 +1,7 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import './App.css';
-import Login from './components/Login/Login';
-import Nav from "./components/Nav";
-import Taps from './components/Taps';
-import Write from './components/Write';
-
-const queryClient = new QueryClient();
+import Router from './shared/Router'
 
 function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-    <div>
-      <Nav/>
-      <Taps/>
-      <Login />
-      <Write />
-    </div>
-    </QueryClientProvider>
-  );
+  return <Router />;
 }
 
 export default App;
