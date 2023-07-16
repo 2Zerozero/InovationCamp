@@ -5,6 +5,7 @@ export const Wrap = styled.div`
     align-items: center;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background: rgb(255,255, 255, 0.9);
