@@ -10,39 +10,28 @@ import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { useState } from 'react';
 import { Padding } from '@mui/icons-material';
 import {CgMathPlus} from "react-icons/cg"
+import * as S from './styled'
 
-function Login() {
-    const [modal, setModal] = useState(false);
-  
-    const openModal = () => {
-      setModal(true);
-    };
-  
-    const closeModal = () => {
-      setModal(false);
-    };
-  
+function Login({modal, closeModal}) {
     return (
       <>
-        <button onClick={openModal}>Log in</button>
   
-        {modal && (
-          <>
+        {modal ? (
+          <S.Wrap>
             <Container component="main" maxWidth="xs">
 
-          <div style={{ display: 'flex', justifyContent: 'flex-end', }}>
-         
-            <CgMathPlus  style={{ 
-              color: '#868E96', 
-              transform: 'rotate(45deg)',
-              fontSize: '2rem' }}
-              onClick={closeModal}
-              />
+              <div style={{ display: 'flex', justifyContent: 'flex-end', }}>
             
-           </div>
+                <CgMathPlus  style={{ 
+                  color: '#868E96', 
+                  transform: 'rotate(45deg)',
+                  fontSize: '2rem' }}
+                  onClick={closeModal}
+                  />
+              
+              </div>
 
               <Box
                 sx={{
@@ -50,6 +39,9 @@ function Login() {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
+                  border: '3px solid rgb(201,201,201)',
+                  borderRadius: '15px',
+                  padding: '50px 30px',
                 }}
               >
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -97,11 +89,10 @@ function Login() {
                 </Grid>
               </Box>
             </Container>
-          </>
-        )}
+          </S.Wrap>
+        ) : null }
       </>
     );
-  }
-  
-  export default Login;
-  
+}
+
+export default Login;
