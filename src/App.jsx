@@ -1,16 +1,7 @@
-import './App.css';
-import Login from './components/Login/Login';
-import Nav from "./components/Nav";
-import Taps from './components/Taps';
+import Router from './shared/Router'
 
 function App() {
-  return (
-    <div>
-      <Nav/>
-      <Taps/>
-      <Login />
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;
