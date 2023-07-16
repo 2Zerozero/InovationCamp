@@ -47,5 +47,3 @@ function Cards({ id, title, isDone, content }) {
 }
 
 export default Cards;
-
-
