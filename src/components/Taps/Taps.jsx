@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import {BiTrendingUp} from "react-icons/bi"
 import {AiOutlineClockCircle} from "react-icons/ai"
-import CardLayout from './CardLayout';
+import CardLayout from '../CardLayout';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,7 +51,7 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label={
       <div >
@@ -63,7 +63,7 @@ export default function BasicTabs() {
         <BiTrendingUp /> 트렌딩
       </div>
     } {...a11yProps(1)} />
-     
+    
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
