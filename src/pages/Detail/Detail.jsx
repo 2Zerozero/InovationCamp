@@ -1,20 +1,30 @@
 import React from 'react'
 import * as S from './style'
 import Nav from '../../components/Nav'
+import { useCard } from "../../hooks/useCard";
 
 function Detail() {
+    const{   
+        title,
+        name,
+        content,
+     
+        onChangeTitleHandle,
+        onChangeContentHandle,
+        onChangeNameHandle,
+        pulsTodo,
+      } = useCard();
 
     return (
         <S.Wrap>
             <Nav />
-            <S.Container>
+            <S.Container >
 
                 {/* 상세페이지 타이틀 */}
                 <h1>타이틀 제목</h1>
                 <S.Header>
                     <S.User>
-                        <div>유저 이름</div>
-                        <div>작성 날짜</div>
+                    <input type="text" placeholder="이름을 입력하세요" value={name} onChange={onChangeNameHandle} />
                     </S.User>
                     <div>💗</div>
                 </S.Header>
