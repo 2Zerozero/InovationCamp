@@ -2,12 +2,12 @@ import React from 'react'
 import * as S from './style'
 import Nav from '../../components/Nav'
 
-
 function Detail() {
 
     return (
         <S.Wrap>
             <Nav />
+
             <S.Container >
 
                 {/* 상세페이지 타이틀 */}

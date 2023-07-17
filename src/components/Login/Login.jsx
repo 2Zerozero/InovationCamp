@@ -29,7 +29,6 @@ function Login({modal, closeModal}) {
         console.log(error)
      }
     }
-
     return (
       <>
   
