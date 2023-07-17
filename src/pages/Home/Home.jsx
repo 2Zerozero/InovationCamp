@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from '../../components/Nav'
-import Taps from '../../components/Taps'
+import Taps from '../../components/Taps/Taps'
 import * as S from './style'
 
 function Home() {

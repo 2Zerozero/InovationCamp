@@ -13,6 +13,7 @@ export const Container = styled.div`
     padding: 20px;
 `
 
+// 헤더
 export const Header = styled.div`
     display: flex;
     justify-content: space-between;
@@ -22,12 +23,91 @@ export const Header = styled.div`
 
 export const User = styled.div`
     display: flex;
+    align-items: center;
     gap: 20px;
 `
 
-export const Content = styled.div`
+// 게시글
+export const ContentWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     min-height: 300px;
 `
 
+export const Icon = styled.div`
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-color: black;
+`
+
+// 댓글 창
+export const CommentWrap = styled.div`
+    margin-top: 60px;
+`
+
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    input {
+        width: 1400px;
+        height: 80px;
+        margin: 20px 0px;
+        padding-left: 20px;
+        border: none;
+        outline: none;
+        border-radius: 6px;
+        box-sizing: border-box;
+        background-color: rgb(231, 231, 231);
+    }
+    button {
+        width: 120px;
+        height: 50px;
+        border: none;
+        border-radius: 6px;
+        font-size: 20px;
+        font-weight: 600;
+        color: rgb(255, 255, 255);
+        background-color: rgb(39 192 130);
+
+        &:hover {
+            background-color: rgb(87 223 168);
+        }
+    }
+`
+
+export const Comments = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+`
+
 export const Comment = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+`
+
+export const UserWrap = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+        width: 40px;
+        height: 30px;
+        margin-right: 20px;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:hover {
+            border-bottom: 1px solid black;
+        }
+    }
 `
