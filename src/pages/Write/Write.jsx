@@ -37,6 +37,7 @@ function Write() {
     // 서버로 전송
     const handleSubmit = () => {
         // 서버 로직작성 해야됩니다.
+        
     }
 
     return (
