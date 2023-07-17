@@ -17,6 +17,26 @@ function Write() {
     // 뒤로가기
     const handleGoBack = () => {
         navigate(-1);
+    };
+
+    // 제목 입력
+    const handleTitleChange = (e) => {
+        setTitle(e.target.value);
+    };
+    
+    // 파일 선택
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+
+    // 내용 입력
+    const handleContentChange = (e) => {
+        setContent(e.target.value);
+    };
+
+    // 서버로 전송
+    const handleSubmit = () => {
+        // 서버 로직작성 해야됩니다.
     }
 
     return (
@@ -32,13 +52,16 @@ function Write() {
                     <input 
                         type='text'
                         value={title}
+                        onChange={handleTitleChange}
                         placeholder='제목을 입력하세요.'
                     />
                     <input
                         type='file'
+                        onChange={handleFileChange}
                     />
                     <textarea
                         value={content}
+                        onChange={handleContentChange}
                         placeholder='오늘의 이야기를 남겨주세요.'
                     />
                 </S.Form>
