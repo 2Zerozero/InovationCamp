@@ -53,6 +53,16 @@ export const ButtonWrap = styled.div`
 `
 
 export const Button = styled.button`
-    width: 120px;
-    height: 40px;
+    width: 140px;
+    height: 60px;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(39, 192, 130);
+
+    &:hover {
+        background-color: rgb(87, 223, 168);
+    }
 `
