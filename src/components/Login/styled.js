@@ -9,4 +9,5 @@ export const Wrap = styled.div`
     width: 100vw;
     height: 100vh;
     background: rgb(255,255, 255, 0.9);
+    z-index: 1;
 `
