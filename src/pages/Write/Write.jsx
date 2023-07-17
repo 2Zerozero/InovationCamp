@@ -12,8 +12,8 @@ function Write() {
 
     const{   
         pulsTodo,
-      } = useCard();
-  
+    } = useCard();
+
     // useState
     const [file, setFile] = useState(null);
     const [title, setTitle] = useState('');
