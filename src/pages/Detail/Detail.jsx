@@ -7,7 +7,8 @@ function Detail() {
     return (
         <S.Wrap>
             <Nav />
-            <S.Container>
+
+            <S.Container >
 
                 {/* 상세페이지 타이틀 */}
                 <h1>타이틀 제목</h1>
