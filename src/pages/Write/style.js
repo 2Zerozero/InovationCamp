@@ -61,6 +61,7 @@ export const Button = styled.button`
     font-weight: bold;
     color: rgb(255, 255, 255);
     background-color: rgb(39, 192, 130);
+    cursor: pointer;
 
     &:hover {
         background-color: rgb(87, 223, 168);
