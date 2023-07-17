@@ -1,33 +1,33 @@
 import React from 'react';
 import Cards from "./Cards";
-import * as S from "./Cards_styled"
-import { useTodo } from '../hooks/useCard'
+import * as S from "./Cards_styled";
+import { useCard } from "../hooks/useCard";
 
-function CardLayout({isDone}) {
-    const {
-        todo,
-      } = useTodo()
-      
-      return (
-        <div>
-       <S.CardLists>
-          {todo.map((item) => {
-            if (item.isDone === isDone) {
-              return (
-                <Cards
+function CardLayout({ isDone }) {
+  const { data } = useCard();
+
+  return (
+    <div>
+      <S.CardLists>
+        {data && data.map((item) => {
+            return (
+              <Cards
                 key={item.id}
-                id={item.id}
+                postId={item.postId}
                 title={item.title}
+                createdDate={item.createdDate}
                 content={item.content}
+                username={item.username}
+                likeCount={item.likeCount}
                 isDone={isDone}
-                />
-              );
-            }
-            return null;
-          })}
-    </S.CardLists>
-        </div>
-  )
+              />
+            );
+          
+         
+        })}
+      </S.CardLists>
+    </div>
+  );
 }
 
-export default CardLayout
+export default CardLayout;

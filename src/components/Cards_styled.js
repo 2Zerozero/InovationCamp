@@ -11,7 +11,7 @@ const CardLists = styled.div`
 // ----------------------------------Cards-------------------------------------------------------
 
 const BootstrapCard = styled.div`
-  width: 20rem;
+  width: 15rem;
   background: var(--bg-element1);
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 16px 0px;

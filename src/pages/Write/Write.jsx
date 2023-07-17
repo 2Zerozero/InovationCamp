@@ -3,9 +3,17 @@ import Nav from '../../components/Nav'
 import * as S from './style'
 import { useNavigate } from 'react-router-dom'
 import { FaBackspace } from "react-icons/fa";
+import { useCard } from '../../hooks/useCard';
+import axios from 'axios';
+import { useQueryClient } from 'react-query';
 
 
 function Write() {
+
+    const{   
+        pulsTodo,
+      } = useCard();
+  
     // useState
     const [file, setFile] = useState(null);
     const [title, setTitle] = useState('');
@@ -35,9 +43,29 @@ function Write() {
     };
 
     // 서버로 전송
-    const handleSubmit = () => {
-        // 서버 로직작성 해야됩니다.
-    }
+    const queryClient = useQueryClient();
+
+    const handleSubmit = async () => {
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('file', file);
+
+    try {
+      await axios.post('http://example.com/api/posts', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+        // 데이터 전송 성공 후 작업
+        console.log('데이터 전송 성공');
+
+        // 쿼리 업데이트
+        queryClient.invalidateQueries('posts');
+      } catch (error) {
+        // 데이터 전송 실패 처리
+        console.error('데이터 전송 실패', error);
+      }
+    };
 
     return (
         <S.Wrap>
@@ -68,7 +96,9 @@ function Write() {
 
                 {/* 전송버튼 */}
                 <S.ButtonWrap>
-                    <S.Button>작성하기</S.Button>
+
+                    <S.Button onClick={handleSubmit}>작성하기</S.Button>
+
                 </S.ButtonWrap>
 
             </S.Container>

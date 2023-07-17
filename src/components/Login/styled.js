@@ -11,3 +11,4 @@ export const Wrap = styled.div`
     background: rgb(255,255, 255, 0.9);
     z-index: 1;
 `
+
