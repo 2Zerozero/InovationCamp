@@ -5,7 +5,7 @@ import {AiFillHeart} from "react-icons/ai"
 import * as S from "./Cards_styled"
 import { styled } from 'styled-components';
 
-function Cards({ id, title, isDone, content,createdDate,username,imgSrc, likeCount }) {
+function Cards({ id, title, isDone, content,createdDate,username,postImageUrl, likeCount }) {
 
   function formatTimeAgo(createdDate) {
     const currentDate = new Date(); // 현재 시간
@@ -32,7 +32,7 @@ function Cards({ id, title, isDone, content,createdDate,username,imgSrc, likeCou
     <S.BootstrapCard>
     <Card key={id} style={{ width: '15rem' }}>
       
-      <Card.Img variant="top" src={imgSrc} style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
+      <Card.Img variant="top" src={postImageUrl} style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
       
       <Card.Body>
         <Card.Title style={{ fontSize:"18px" , fontWeight: "600"}}>{title}</Card.Title>
@@ -50,7 +50,7 @@ function Cards({ id, title, isDone, content,createdDate,username,imgSrc, likeCou
         <div style={{display: 'flex', alignItems: 'center'}}>
       <Card.Img
           variant="top"
-          src="https://avatars.githubusercontent.com/u/126327414?v=4"
+          src={postImageUrl}
           style={{
             objectFit: 'cover',
             width: '1cm',
