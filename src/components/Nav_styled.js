@@ -22,4 +22,8 @@ const StBtn = styled.button`
   border: none;
 `;
 
-export { NavBox, StBtn };
+const NavText = styled.div`
+  font-family: "Caprasimo", cursive;
+`;
+
+export { NavBox, StBtn, NavText };

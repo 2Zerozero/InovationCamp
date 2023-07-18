@@ -10,9 +10,9 @@ import { useQueryClient } from 'react-query';
 
 function Write() {
 
-    const{   
-        pulsTodo,
-    } = useCard();
+    // const{   
+    //     pulsTodo,
+    //   } = useCard();
 
     // useState
     const [file, setFile] = useState(null);
@@ -42,30 +42,40 @@ function Write() {
         setContent(e.target.value);
     };
 
-    // 서버로 전송
+    // 서버로 전송 formData
+
     const queryClient = useQueryClient();
 
     const handleSubmit = async () => {
     const formData = new FormData();
-    formData.append('title', title);
+    // formData.append('title', title);
+    formData.append('itemName', "Success");
     formData.append('file', file);
-
+    // MultipartFile
+    
+    //${process.env.REACT_APP_SERVER_URL}
     try {
-        await axios.post('http://example.com/api/posts', formData, {
+      const accessToken = "Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2NVY3UEp1Q3F6WXBUNzl3QVBvSVpKZ3JITGFlUzlIRzR6OUZLOWc2eURtS2xCcGlWMVdsMzhmWk92cDhKSVpIIiwiZXhwIjoxNjg5Njk0OTA3LCJpYXQiOjE2ODk2MDg1MDd9.6RGGfkB1Yg1ulEbW8qHjl5-3FWqtp5gPsVyG36B--gE"
+      const res = await axios.post(`http://1.244.223.183/api/test/review/form`, 
+      formData , {
         headers: {
-            'Content-Type': 'multipart/form-data',
+           Authorization: `${accessToken}`,
+          'Content-Type': 'multipart/form-data',
         },
-    });
-    // 데이터 전송 성공 후 작업
-    console.log('데이터 전송 성공');
+      }
+      );
 
-    // 쿼리 업데이트
-    queryClient.invalidateQueries('posts');
-        } catch (error) {
-            // 데이터 전송 실패 처리
-            console.error('데이터 전송 실패', error);
-        }
-    };
+      // 데이터 전송 성공 후 작업
+      console.log('데이터 전송 성공');
+
+      console.log(res);
+      // 쿼리 업데이트
+      queryClient.invalidateQueries('posts');
+    } catch (error) {
+      // 데이터 전송 실패 처리
+      console.error('데이터 전송 실패', error);
+    }
+  };
 
     return (
         <S.Wrap>
@@ -96,9 +106,7 @@ function Write() {
 
                 {/* 전송버튼 */}
                 <S.ButtonWrap>
-
                     <S.Button onClick={handleSubmit}>작성하기</S.Button>
-
                 </S.ButtonWrap>
 
             </S.Container>
