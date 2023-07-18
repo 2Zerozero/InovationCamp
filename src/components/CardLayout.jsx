@@ -15,7 +15,7 @@ function CardLayout({ isDone }) {
       try {
         const accessToken = "Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk2OTUwMzEsImlhdCI6MTY4OTY1OTAzMX0.hQp0BFgdNQZw_QKCzPlWq9DsSL1Ucgsfxw9z86MxugY"
         const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}api/posts`, 
-       {
+      {
         headers: {
             Authorization: accessToken,
         },
