@@ -4,7 +4,7 @@ import axios from "axios";
 //조회
 const getTodos = async () => {
   const response = await axios.get(
-    `${process.env.REACT_APP_SERVER_URL}api/posts`
+    `${process.env.REACT_APP_SERVER_URL}/api/posts`
   );
   console.log(response.data);
   return response.data;
@@ -13,7 +13,7 @@ const getTodos = async () => {
 //추가
 const addTodo = async (newTodo) => {
   const response = await axios.post(
-    `${process.env.REACT_APP_SERVER_URL}api/posts`,
+    `${process.env.REACT_APP_SERVER_URL}/api/posts`,
     newTodo
   );
   console.log("response:", response.data);
