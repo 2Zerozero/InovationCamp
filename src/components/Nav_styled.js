@@ -9,6 +9,11 @@ const NavBox = styled.div`
   > div :not(:last-child) {
     margin-right: 20px;
   }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const StBtn = styled.button`

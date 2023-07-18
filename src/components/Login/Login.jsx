@@ -19,7 +19,7 @@ function Login({modal, closeModal}) {
   
     const onLogin = async () => {
       console.log("동작")
-     try {
+      try {
       
       let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/login`, {
         address: "test12345",
@@ -27,9 +27,9 @@ function Login({modal, closeModal}) {
       })
       console.log(res)
       document.cookie = `accessToken=${res.headers.authorization}; path=/;`
-     } catch (error) {
+      } catch (error) {
         console.log(error)
-     }
+      }
     }
 
 
