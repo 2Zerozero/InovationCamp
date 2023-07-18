@@ -21,6 +21,7 @@ function Detail() {
         return <div>Error fetching card data...</div>;
     }
 
+    console.log('Detail 페이지 ID:', id); 
     return (
         <S.Wrap>
             <Nav />
