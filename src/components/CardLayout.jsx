@@ -17,7 +17,7 @@ function CardLayout({ isDone }) {
         const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}api/posts`, 
        {
         headers: {
-           Authorization: accessToken,
+            Authorization: accessToken,
         },
       }
       );
@@ -54,21 +54,19 @@ function CardLayout({ isDone }) {
         {/* {datas && datas.map((item) =>  */}
         {data && data.map((item) => 
         {
-            return (
-              <Cards
-                key={item.id}
-                postId={item.postId}
-                title={item.title}
-                createdDate={item.createdDate}
-                content={item.content}
-                username={item.username}
-                postImageUrl={item.postImageUrl}
-                likeCount={item.likeCount}
-                isDone={isDone}
-              />
-            );
-          
-        
+          return (
+            <Cards
+              key={item.id}
+              postId={item.postId}
+              title={item.title}
+              createdDate={item.createdDate}
+              content={item.content}
+              username={item.username}
+              postImageUrl={item.postImageUrl}
+              likeCount={item.likeCount}
+              isDone={isDone}
+            />
+          );
         })}
       </S.CardLists>
     </div>

@@ -24,29 +24,20 @@ function Login({ modal, closeModal }) {
     setIsSignUp(!isSignUp);
   };
 
-  const onLogin = async () => {
-    console.log("동작");
-    try {
-      let res;
-      if (isSignUp) {
-        // 회원가입 로직 작성
-        res = await axios.post(`${process.env.REACT_APP_SERVER_URL}api/user/signup`, {
-          username: "team6id",
-          password: "team6Pw!"
-        });
-      } else {
-        // 로그인 로직 작성
-        res = await axios.post(`${process.env.REACT_APP_SERVER_URL}api/user/login`, {
-          username: "team6id",
-          password: "team6Pw!"
-        });
+    const onLogin = async () => {
+      console.log("동작")
+      try {
+      
+      let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/login`, {
+        address: "test12345",
+        password: "test12345"
+      })
+      console.log(res)
+      document.cookie = `accessToken=${res.headers.authorization}; path=/;`
+      } catch (error) {
+        console.log(error)
       }
-      console.log(res);
-      document.cookie = `accessToken=${res.headers.authorization}; path=/;`;
-    } catch (error) {
-      console.log(error);
     }
-  };
 
     return (
       <>

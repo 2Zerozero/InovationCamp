@@ -1,8 +1,25 @@
 import React from 'react'
 import * as S from './style'
 import Nav from '../../components/Nav'
+import { useQuery } from 'react-query';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function Detail() {
+    const { id } = useParams();
+
+    const { data: cardData, isLoading, isError } = useQuery(['card', id], () =>
+        axios.get(`http://52.79.242.223/api/posts/${id}`).then((res) => res.data)
+    );
+
+    // 데이터를 불러오기 전에 로딩 상태를 보여줍니다.
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+    //데이터를 불러오는 중 에러가 발생했을 때 에러 메시지를 보여줍니다.
+    if (isError) {
+        return <div>Error fetching card data...</div>;
+    }
 
     return (
         <S.Wrap>
@@ -11,21 +28,21 @@ function Detail() {
             <S.Container >
 
                 {/* 상세페이지 타이틀 */}
-                <h1>타이틀 제목</h1>
+                <h1>{cardData.title}</h1>
                 <S.Header>
                     <S.User>
-                        <div>유저 이름</div>
-                        <div>작성 날짜</div>
+                        <div>{cardData.username}</div>
+                        <div>{cardData.createdDate}</div>
                     </S.User>
-                    <div>💗</div>
+                    <div>💗{cardData.likeCount}</div>
                 </S.Header>
 
                 {/* 상세페이지 게시물 */}
                 <S.ContentWrap>
-                    <div>예시 텍스트 입니다.</div>
+                    <div>{cardData.content}</div>
                     <S.User>
                         <S.Icon />
-                        <div>작성자 이름</div>
+                        <div>{cardData.username}</div>
                     </S.User>
                 </S.ContentWrap>
 
