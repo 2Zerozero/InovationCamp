@@ -16,13 +16,13 @@ function Nav() {
     setModal(false);
   };
 
- // navigate
- const navigate = useNavigate();
+  // navigate
+  const navigate = useNavigate();
 
- // 뒤로가기
- const handleGoBack = () => {
-     navigate('/posts');
- };
+  // 뒤로가기
+  const handleGoBack = () => {
+    navigate('/api/posts');
+  };
   return (
     <>
       <S.NavBox>

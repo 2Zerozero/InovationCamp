@@ -19,15 +19,15 @@ function Login({modal, closeModal}) {
   
     const onLogin = async () => {
       console.log("동작")
-     try {
-      let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/login`, {
-        username: "edwin00",
-        password: "1!Qq1!Qq"
-      })
-      console.log(res)
-     } catch (error) {
+      try {
+        let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/login`, {
+          username: "edwin00",
+          password: "1!Qq1!Qq"
+        })
+        console.log(res)
+      } catch (error) {
         console.log(error)
-     }
+      }
     }
     return (
       <>
@@ -43,7 +43,7 @@ function Login({modal, closeModal}) {
                   transform: 'rotate(45deg)',
                   fontSize: '2rem' }}
                   onClick={closeModal}
-                  />
+                />
               
               </div>
 
@@ -89,6 +89,7 @@ function Login({modal, closeModal}) {
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
+                  onClick={onLogin}
                 >
                   Sign in
                 </Button>
@@ -99,7 +100,7 @@ function Login({modal, closeModal}) {
                   </Grid>
                   <Grid item>
                     <Link  href="#">Sign Up</Link>
-                    <button onClick={onLogin} >로그인</button>
+                    {/* <button onClick={onLogin} >로그인</button> */}
                   </Grid>
                 </Grid>
               </Box>
