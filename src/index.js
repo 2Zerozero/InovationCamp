@@ -7,16 +7,21 @@ import store from "./redux/config/configStore";
 
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "react-query";
+import ThemeProvider from "./context/themeProvider";
+import { GlobalStyle } from "./theme/GlobalStyles";
 
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </QueryClientProvider>
+  <ThemeProvider>
+    <GlobalStyle />
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

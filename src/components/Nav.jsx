@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import * as S from "./Nav_styled";
-import {BiSolidMoon} from "react-icons/bi"
-import {BsFillSunFill} from "react-icons/bs"
 import Login from './Login/Login';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../context/themeProvider';
+import ThemeToggle from '../theme/ThemeToggle';
 
-function Nav() {
+
+function Nav({children}) {
+  const [ThemeMode, toggleTheme] = useTheme();
+
   const [modal, setModal] = useState(false);
   
   const openModal = () => {
@@ -21,16 +24,18 @@ function Nav() {
 
  // 뒤로가기
  const handleGoBack = () => {
-     navigate('/posts');
+     navigate('/api/posts');
  };
   return (
     <>
       <S.NavBox>
-          <h4>항구</h4>
+      <h4 style={{ fontFamily: "Caprasimo display" }}>항구</h4>
+      
+        
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div>
-              <BsFillSunFill size="27" />
-              <BiSolidMoon size="27" />
+                  <ThemeToggle toggle={toggleTheme} mode={ThemeMode}>
+                  DarkMode</ThemeToggle>
             </div>
             <S.StBtn onClick={openModal}>로그인</S.StBtn>
             <button onClick={handleGoBack}>새 글 작성</button>
