@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
@@ -14,9 +14,16 @@ import { Padding } from '@mui/icons-material';
 import {CgMathPlus} from "react-icons/cg"
 import * as S from './styled'
 import axios from 'axios';
+import {FaAnchor} from "react-icons/fa"
 
-function Login({modal, closeModal}) {
-  
+
+function Login({ modal, closeModal }) {
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  const toggleSignUp = () => {
+    setIsSignUp(!isSignUp);
+  };
+
     const onLogin = async () => {
       console.log("동작")
       try {
@@ -32,31 +39,21 @@ function Login({modal, closeModal}) {
       }
     }
 
-
-
-    // ------------------------------------------------------------------------------------------
-
-
-
-
     return (
       <>
   
         {modal ? (
+
           <S.Wrap>
             <Container component="main" maxWidth="xs">
-
               <div style={{ display: 'flex', justifyContent: 'flex-end', }}>
-            
                 <CgMathPlus  style={{ 
                   color: '#868E96', 
                   transform: 'rotate(45deg)',
                   fontSize: '2rem' }}
                   onClick={closeModal}
                   />
-              
               </div>
-
               <Box
                 sx={{
                   marginTop: 8,
@@ -68,56 +65,74 @@ function Login({modal, closeModal}) {
                   padding: '50px 30px',
                 }}
               >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                  <LockOutlinedIcon />
+                <Avatar style={{ backgroundColor: "#3F9EF2" }} m={{ m: 1, bgcolor: 'secondary.main' }}>
+                  <FaAnchor style={{ color: "#202124" }} />
                 </Avatar>
-                <Typography component="h1" variant="h5">
-                  Sign in
-                </Typography>
-                <TextField
-                  name='email'
-                  autoFocus
-                  autoComplete="email"
-                  label="Email Address"
-                  required
-                  fullWidth
-                />
-                <TextField
-                  margin="normal"
-                  fullWidth
-                  name='password'
-                  autoComplete="current-password"
-                  label="Password"
-                  type='Password'
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
-                <Button
-                  type='submit'
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }} 
-                  onClick={onLogin}
-                >
-                  Sign in
-                </Button>
-  
-                <Grid container>
-                  <Grid item xs>
-                    <Link href="#">Forgot password?</Link>
-                  </Grid>
-                  <Grid item>
-                    <Link  href="#">Sign Up</Link>
-                  </Grid>
-                </Grid>
+                <Typography style={{ color: "#3F9EF2" }} component="h1" variant="h5">
+                항구
+              </Typography>
+              <Typography style={{ color: "#3F9EF2" }} component="h1" variant="h5">
+                {isSignUp ? "회원가입" : "로그인"}
+              </Typography>
+              <TextField
+                name='email'
+                autoFocus
+                autoComplete="email"
+                label="이메일"
+                required
+                fullWidth
+              />
+              <TextField
+                margin="normal"
+                fullWidth
+                name='password'
+                autoComplete="current-password"
+                label="패스워드"
+                type='Password'
+              />
+              <FormControlLabel style={{ color: "#3F9EF2" }}
+                control={<Checkbox value="remember" color="primary" />}
+                label="기억해줘!"
+              />
+
+              <Button
+                style={{ backgroundColor: "#3F9EF2" }}
+                type='submit'
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1, mb: 3 }}
+                onClick={onLogin}
+              >
+                {isSignUp ? "회원가입" : "로그인"}
+              </Button>
+
+
+              <Button
+                style={{ backgroundColor: "#3F9EF2" }}
+                type='submit'
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1 }}
+                onClick={toggleSignUp}
+              >
+                {isSignUp ? "로그인 하기" : "회원가입 하기"}
+              </Button>
+              <Button
+                style={{ backgroundColor: "#3F9EF2" }}
+                type='submit'
+                fullWidth
+                variant="contained"
+                sx={{ mt: 1 }}
+              >
+                패스워드 까먹음?
+              </Button>
               </Box>
             </Container>
           </S.Wrap>
+
+          
         ) : null }
       </>
     );
 }
-
 export default Login;

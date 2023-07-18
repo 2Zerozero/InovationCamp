@@ -13,9 +13,9 @@ function CardLayout({ isDone }) {
   useEffect( () => {
     const init = async () => {
       try {
-        const accessToken = "Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2NVY3UEp1Q3F6WXBUNzl3QVBvSVpKZ3JITGFlUzlIRzR6OUZLOWc2eURtS2xCcGlWMVdsMzhmWk92cDhKSVpIIiwiZXhwIjoxNjg5Njk0OTA3LCJpYXQiOjE2ODk2MDg1MDd9.6RGGfkB1Yg1ulEbW8qHjl5-3FWqtp5gPsVyG36B--gE"
-      const res = await axios.get(`http://1.244.223.183/api/food/rank`, 
-        {
+        const accessToken = "Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk2OTUwMzEsImlhdCI6MTY4OTY1OTAzMX0.hQp0BFgdNQZw_QKCzPlWq9DsSL1Ucgsfxw9z86MxugY"
+        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}api/posts`, 
+       {
         headers: {
             Authorization: accessToken,
         },
@@ -35,7 +35,7 @@ function CardLayout({ isDone }) {
         element.username = "456";
         element.likeCount = 12;
         element.isDone = false;
-        element.imgSrc = element.imageUrl;
+        element.postImageUrl = element.imageUrl;
       });
       setDatas(data2);
     
@@ -51,8 +51,8 @@ function CardLayout({ isDone }) {
   return (
     <div>
       <S.CardLists>
-        {datas && datas.map((item) => 
-        // {data && data.map((item) => 
+        {/* {datas && datas.map((item) =>  */}
+        {data && data.map((item) => 
         {
           return (
             <Cards
@@ -62,7 +62,7 @@ function CardLayout({ isDone }) {
               createdDate={item.createdDate}
               content={item.content}
               username={item.username}
-              imgSrc={item.imgSrc}
+              postImageUrl={item.postImageUrl}
               likeCount={item.likeCount}
               isDone={isDone}
             />
