@@ -30,42 +30,42 @@ function Cards({ id, title, isDone, content,createdDate,username,likeCount }) {
 
   return (
     <S.BootstrapCard>
-    <Card key={id} style={{ width: '15rem' }}>
-      
-      <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/126327414?v=4" style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
-      
-      <Card.Body>
-        <Card.Title style={{ fontSize:"18px" , fontWeight: "600"}}>{title}</Card.Title>
+      <Card key={id} style={{ width: '15rem' }}>
+        
+        <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/126327414?v=4" style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
+        
         <Card.Body>
-          {content}
+          <Card.Title style={{ fontSize:"18px" , fontWeight: "600"}}>{title}</Card.Title>
+          <Card.Body>
+            {content}
+          </Card.Body>
         </Card.Body>
-      </Card.Body>
 
-      <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
-        <ListGroup.Item>0개의 댓글</ListGroup.Item>
-      </ListGroup>
+        <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
+          <ListGroup.Item>0개의 댓글</ListGroup.Item>
+        </ListGroup>
 
-      <S.CardBody style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <div style={{display: 'flex', alignItems: 'center'}}>
-      <Card.Img
-          variant="top"
-          src="https://avatars.githubusercontent.com/u/126327414?v=4"
-          style={{
-            objectFit: 'cover',
-            width: '1cm',
-            height: '1cm',
-            borderRadius: '50%',
-            border: '1px solid black',
-            marginRight: '10px', 
-          }}
-        />
-        <Card.Link >{username}</Card.Link>
-        </div>
-        <HeartLink ><AiFillHeart style={{ color: "red" }}/>{likeCount}</HeartLink>
-      </S.CardBody>
-    </Card >
-</S.BootstrapCard>
+        <S.CardBody style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+        <Card.Img
+            variant="top"
+            src="https://avatars.githubusercontent.com/u/126327414?v=4"
+            style={{
+              objectFit: 'cover',
+              width: '1cm',
+              height: '1cm',
+              borderRadius: '50%',
+              border: '1px solid black',
+              marginRight: '10px', 
+            }}
+          />
+          <Card.Link >{username}</Card.Link>
+          </div>
+          <HeartLink ><AiFillHeart style={{ color: "red" }}/>{likeCount}</HeartLink>
+        </S.CardBody>
+      </Card >
+    </S.BootstrapCard>
   );
 }
 
