@@ -75,7 +75,9 @@ function Detail() {
         e.preventDefault();
         try {
             // 댓글 작성 요청
-            const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
+            const accessToken = getCookie("accessToken");
+            console.log(accessToken);
+            // const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
             await axios.post(
                 `http://52.79.242.223/api/comments`,
                 {
@@ -84,7 +86,8 @@ function Detail() {
                 },
                 {
                     headers: {
-                        Authorization: accessToken,
+                        Accept: "*/*",
+                        Authorization: `${accessToken}`,
                     },
                 }
             )
