@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './style'
 import Nav from '../../components/Nav'
 import { useQuery } from 'react-query';
@@ -6,9 +6,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function Detail() {
+    // 좋아요
+    const [isLiked, setIsLiked] = useState(false);
+    // 게시글 ID 조회
     const { id } = useParams();
 
-    const { data: cardData, isLoading, isError } = useQuery(['card', id], () =>
+    const { data: cardData, isLoading, isError, refetch } = useQuery(['card', id], () =>
         axios.get(`http://52.79.242.223/api/posts/${id}`).then((res) => res.data)
     );
 
@@ -21,6 +24,29 @@ function Detail() {
         return <div>Error fetching card data...</div>;
     }
 
+    // 핸들러
+    const handleLikeButton = async () => {
+        try {
+            const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
+            await axios.post(
+                `http://52.79.242.223/api/posts/${id}/like`,
+                {},
+                {
+                    headers: {
+                        Authorization: accessToken,
+                    },
+                }
+            );
+            // 좋아요 버튼 상태 변경
+            setIsLiked((prevState) => !prevState);
+
+            // 리패치
+            refetch();
+        } catch (error) {
+            console.log('좋아요 처리 실패', error);
+        }
+    };
+    
     console.log('Detail 페이지 ID:', id); 
     return (
         <S.Wrap>
@@ -35,11 +61,18 @@ function Detail() {
                         <div>{cardData.username}</div>
                         <div>{cardData.createdDate}</div>
                     </S.User>
-                    <div>💗{cardData.likeCount}</div>
+                    <div>
+                    {/* 클릭 시 좋아요 처리 */}
+                        <S.LikeButton onClick={handleLikeButton}>
+                        {isLiked ? '💗' : '🤍'}
+                        </S.LikeButton>
+                        {cardData.likeCount}
+                    </div>
                 </S.Header>
 
                 {/* 상세페이지 게시물 */}
                 <S.ContentWrap>
+                    <img src={cardData.postImageUrl} alt="이미지" />
                     <div>{cardData.content}</div>
                     <S.User>
                         <S.Icon />
