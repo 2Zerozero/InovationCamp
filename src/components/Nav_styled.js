@@ -5,7 +5,7 @@ const NavBox = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   justify-content: space-between;
-  font-size: 30px;
+  font-size: 20px;
   > div :not(:last-child) {
     margin-right: 20px;
   }
@@ -27,8 +27,8 @@ const StBtn = styled.button`
   border: none;
 `;
 
-const NavText = styled.div`
-  font-family: "Caprasimo", cursive;
+const fontText = styled.div`
+  font-family: "Giants-Inline";
 `;
 
-export { NavBox, StBtn, NavText };
+export { NavBox, StBtn, fontText };

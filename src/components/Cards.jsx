@@ -31,6 +31,9 @@ function Cards({ postId, id, title, isDone, content,createdDate,username,postIma
 
   return (
     <S.BootstrapCard>
+
+      <HoverCard key={id} style={{ width: '15rem' }}>
+
       <Link to={`/api/posts/${postId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <Card key={id} style={{ width: '15rem' }}>
           
@@ -42,6 +45,7 @@ function Cards({ postId, id, title, isDone, content,createdDate,username,postIma
               {content}
             </Card.Body>
           </Card.Body>
+
 
           <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
             <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
@@ -78,4 +82,11 @@ const HeartLink = styled(Card.Link)`
   display: flex;
   align-items: center;
   margin-top: 5px; /* 원하는 만큼의 여백 설정 */
+`;
+
+const HoverCard = styled(Card)`
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+  }
 `;
