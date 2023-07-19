@@ -54,9 +54,9 @@ function Write() {
         //${process.env.REACT_APP_SERVER_URL}
         // `http://1.244.223.183/api/test/review/form2`, 
         try {
-            const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYjF5bHEiLCJhdXRoIjoiVVNFUiIsImV4cCI6MTY4OTcyMTQ2OSwiaWF0IjoxNjg5Njg1NDY5fQ.c2Eq6zYltjV9fOZq34tlQn44BLWgYPC5F0SonF_Yt0w"
+            const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
             // const accessToken ="Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyOXRieHRrQ1Zjc0lxTS8wYkU4ZmZFQnhzZzJDc0h4ekdpWVVjaHNNMWh5YjI4NzRCelk3eE9ZazMxYkhyeWFlIiwiZXhwIjoxNjg5NzU3NTI0LCJpYXQiOjE2ODk2NzExMjR9.tyDUuPNXwnwz4ah7R2hKSxJC4Whv6o04cidicLoz09s"
-            const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}api/posts`, 
+            const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/posts`, 
             // const res = await axios.post(`http://1.244.223.183/api/test/review/form3`,
                 Data , {
                     headers: {
@@ -71,6 +71,8 @@ function Write() {
             console.log(res);
             // 쿼리 업데이트
             queryClient.invalidateQueries('posts');
+            // 작성 후 메인페이지로 이동
+            navigate('/');
         } catch (error) {
             // 데이터 전송 실패 처리
             console.error('데이터 전송 실패', error);

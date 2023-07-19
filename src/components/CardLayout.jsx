@@ -13,7 +13,7 @@ function CardLayout({ isDone }) {
   useEffect( () => {
     const init = async () => {
       try {
-        const accessToken = "Bearer%20eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk2OTUwMzEsImlhdCI6MTY4OTY1OTAzMX0.hQp0BFgdNQZw_QKCzPlWq9DsSL1Ucgsfxw9z86MxugY"
+        const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
         const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`, 
       {
         headers: {
