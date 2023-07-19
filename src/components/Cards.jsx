@@ -4,8 +4,9 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import {AiFillHeart} from "react-icons/ai"
 import * as S from "./Cards_styled"
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom'
 
-function Cards({ id, title, isDone, content,createdDate,username,postImageUrl, likeCount }) {
+function Cards({ postId, id, title, isDone, content,createdDate,username,postImageUrl, likeCount }) {
 
   function formatTimeAgo(createdDate) {
     const currentDate = new Date(); // 현재 시간
@@ -30,44 +31,48 @@ function Cards({ id, title, isDone, content,createdDate,username,postImageUrl, l
 
   return (
     <S.BootstrapCard>
-       <HoverCard key={id} style={{ width: '15rem' }}>
-    <Card key={id} style={{ width: '15rem' }}>
-      
-      <Card.Img variant="top" src={postImageUrl} style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
-      
-      <Card.Body>
-        <Card.Title style={{ fontSize:"18px" , fontWeight: "600"}}>{title}</Card.Title>
-        <Card.Body>
-          {content}
-        </Card.Body>
-      </Card.Body>
 
-      <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
-        <ListGroup.Item>0개의 댓글</ListGroup.Item>
-      </ListGroup>
+      <HoverCard key={id} style={{ width: '15rem' }}>
 
-      <S.CardBody style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-        <div style={{display: 'flex', alignItems: 'center'}}>
-      <Card.Img
-          variant="top"
-          src={postImageUrl}
-          style={{
-            objectFit: 'cover',
-            width: '1cm',
-            height: '1cm',
-            borderRadius: '50%',
-            border: '1px solid black',
-            marginRight: '10px', 
-          }}
-        />
-        <Card.Link >{username}</Card.Link>
-        </div>
-        <HeartLink ><AiFillHeart style={{ color: "red" }}/>{likeCount}</HeartLink>
-      </S.CardBody>
-    </Card >
-    </HoverCard>
-</S.BootstrapCard>
+      <Link to={`/api/posts/${postId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Card key={id} style={{ width: '15rem' }}>
+          
+          <Card.Img variant="top" src={postImageUrl} style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
+          
+          <Card.Body>
+            <Card.Title style={{ fontSize:"18px" , fontWeight: "600"}}>{title}</Card.Title>
+            <Card.Body>
+              {content}
+            </Card.Body>
+          </Card.Body>
+
+
+          <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+            <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
+            <ListGroup.Item>0개의 댓글</ListGroup.Item>
+          </ListGroup>
+
+          <S.CardBody style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+          <Card.Img
+              variant="top"
+              src={postImageUrl}
+              style={{
+                objectFit: 'cover',
+                width: '1cm',
+                height: '1cm',
+                borderRadius: '50%',
+                border: '1px solid black',
+                marginRight: '10px', 
+              }}
+            />
+            <Card.Link >{username}</Card.Link>
+            </div>
+            <HeartLink ><AiFillHeart style={{ color: "red" }}/>{likeCount}</HeartLink>
+          </S.CardBody>
+        </Card >
+      </Link>
+  </S.BootstrapCard>
   );
 }
 
