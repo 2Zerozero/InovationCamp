@@ -22,7 +22,6 @@ function getCookie(cookieName){
 
 function CardLayout({ isDone }) {
   const { data } = useCard();
-
   // DB connect Test
   const [datas, setDatas] = useState();
 
