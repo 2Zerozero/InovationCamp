@@ -42,6 +42,11 @@ export const Icon = styled.div`
     background-color: black;
 `
 
+export const LikeButton = styled.button`
+    border: none;
+    background: none;
+`
+
 // 댓글 창
 export const CommentWrap = styled.div`
     margin-top: 60px;

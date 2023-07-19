@@ -29,8 +29,8 @@ function Login({ modal, closeModal }) {
       try {
       
       let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/login`, {
-        address: "test12345",
-        password: "test12345"
+        username: "team6id",
+        password: "team6Pw!"
       })
       console.log(res)
       document.cookie = `accessToken=${res.headers.authorization}; path=/;`
