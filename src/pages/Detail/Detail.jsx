@@ -17,11 +17,7 @@ function getCookie(cookieName){
         }
     }
     return cookieValue;
-  }
-  
-
-
-
+}
 
 
 function Detail() {
@@ -92,7 +88,7 @@ function Detail() {
                 }
             )
 
-            // // 리패치
+            // 리패치
             refetch();
 
             // 댓글 작성 후 폼 초기화
@@ -101,6 +97,28 @@ function Detail() {
             console.log('댓글 작성 실패', error);
         }
     }
+
+    // 댓글 삭제 기능
+    const handleCommentDelete = async (commentId) => {
+        try {
+            const accessToken = getCookie('accessToken');
+            await axios.delete(
+                `http://52.79.242.223/api/comments/${commentId}`,
+                {
+                    headers: {
+                        Accept: "*/*",
+                        Authorization: `${accessToken}`,
+                    },
+                }
+            )
+
+            // 리패치
+            refetch();
+        } catch (error) {
+            console.log('댓글 삭제 실패', error);
+        }
+    };
+
     console.log('Detail 페이지 ID:', id); 
     return (
         <S.Wrap>
@@ -154,7 +172,8 @@ function Detail() {
                                 key={comment.commentId}
                                 id={comment.commentId}
                                 content={comment.content} 
-                                username={comment.username} 
+                                username={comment.username}
+                                onDelete={() => handleCommentDelete(comment.commentId)}
                             />
                         ))}
                     </S.Comments>
