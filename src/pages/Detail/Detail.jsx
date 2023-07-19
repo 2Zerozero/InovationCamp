@@ -119,7 +119,6 @@ function Detail() {
         }
     };
 
-    console.log('Detail 페이지 ID:', id); 
     return (
         <S.Wrap>
             <Nav />
