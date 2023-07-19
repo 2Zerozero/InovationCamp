@@ -11,6 +11,11 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
+
+    h1 {
+        font-size: 40px;
+        font-weight: 600;
+    }
 `
 
 // 헤더
