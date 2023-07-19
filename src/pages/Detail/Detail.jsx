@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import * as S from './style'
 import Nav from '../../components/Nav'
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 import Comment from '../../components/Comment/Comment';
 
@@ -21,6 +22,8 @@ function getCookie(cookieName){
 
 
 function Detail() {
+    // navigate
+    const navigate = useNavigate();
     // useState
     const [isLiked, setIsLiked] = useState(false);
     const [commentText, setCommentText] = useState('');
@@ -41,7 +44,7 @@ function Detail() {
         return <div>Error fetching card data...</div>;
     }
 
-    // 핸들러
+    // 좋아요 기능
     const handleLikeButton = async () => {
         try {
             const accessToken = getCookie("accessToken");
@@ -67,6 +70,29 @@ function Detail() {
         }
     };
 
+    // 게시글 삭제 기능
+    const handlePostDelete = async () => {
+        try {
+            const accessToken = getCookie("accessToken");
+            await axios.delete(
+                `http://52.79.242.223/api/posts/${id}`,
+                {
+                    headers: {
+                        Accept: "*/*",
+                        Authorization: `${accessToken}`,
+                    },
+                }
+            )
+            // 리패치
+            refetch();
+            // 메인페이지로 이동
+            navigate('/');
+        } catch (error) {
+            console.log('게시글 삭제 실패', error);
+        }
+    }
+
+    // 댓글 추가 기능
     const handleCommentSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -111,7 +137,6 @@ function Detail() {
                     },
                 }
             )
-
             // 리패치
             refetch();
         } catch (error) {
@@ -131,6 +156,7 @@ function Detail() {
                     <S.User>
                         <div>{cardData.username}</div>
                         <div>{cardData.createdDate}</div>
+                        <button onClick={handlePostDelete}>삭제</button>
                     </S.User>
                     <div>
                     {/* 클릭 시 좋아요 처리 */}
