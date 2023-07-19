@@ -34,7 +34,7 @@ function Cards({ postId, id, title, isDone, content,createdDate,username,postIma
 
       <HoverCard key={id} style={{ width: '15rem' }}>
 
-        <Link to={`/api/posts/${postId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={`/detail/${postId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
           <Card key={id} style={{ width: '15rem' }}>
             
             <Card.Img variant="top" src={postImageUrl} style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>

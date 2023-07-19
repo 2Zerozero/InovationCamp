@@ -23,8 +23,8 @@ function Nav({children}) {
   const navigate = useNavigate();
 
   // 뒤로가기
-  const handleGoBack = () => {
-    navigate('/api/posts');
+  const handleGoWrite = () => {
+    navigate('/write');
   };
   return (
     <>
@@ -40,7 +40,7 @@ function Nav({children}) {
               DarkMode
             </ThemeToggle>
           </div>
-          <div style={{ cursor: 'pointer' }}  onClick={handleGoBack}>새 글 작성</div>
+          <div style={{ cursor: 'pointer' }}  onClick={handleGoWrite}>새 글 작성</div>
           <div style={{ cursor: 'pointer' }}  onClick={openModal}>로그인</div>
         </div>
 
