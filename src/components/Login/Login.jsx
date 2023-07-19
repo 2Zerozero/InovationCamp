@@ -4,39 +4,85 @@ import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import { Padding } from '@mui/icons-material';
 import {CgMathPlus} from "react-icons/cg"
 import * as S from './styled'
 import axios from 'axios';
 import {FaAnchor} from "react-icons/fa"
 
+const instanceAxios = axios.create({
+  baseURL : process.env.REACT_APP_SERVER_URL
+  // baseURL : "http://1.244.223.183"
+})
+
 
 function Login({ modal, closeModal }) {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const toggleSignUp = () => {
+    initTextFiled();
     setIsSignUp(!isSignUp);
   };
+  
+  const initTextFiled = () =>{
+    setUsername("");
+    setPassword("");
+  }
 
-    const onLogin = async () => {
-      console.log("동작")
-      try {
-      
-      let res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/login`, {
-        address: "test12345",
-        password: "test12345"
-      })
+  const LoginState = async () => {
+
+    try {
+      const payload = {
+        username:username,
+        password:password
+      }
+      let res = await instanceAxios.post(`/api/user/login`, payload)
+      if(res.data.status >= 300){
+        alert(res.data.message)
+        return;
+      }
+      initTextFiled();
       console.log(res)
       document.cookie = `accessToken=${res.headers.authorization}; path=/;`
+      closeModal();
       } catch (error) {
         console.log(error)
       }
+  }
+
+  const SignupState = async () => {
+    try {
+      const payload = {
+        username:username,
+        password:password
+      }
+      let res = await instanceAxios.post(`/api/user/signup`, payload)
+      if(res.data.status >= 300){
+        alert(res.data.message)
+        return;
+      }
+      console.log(res)
+      initTextFiled();
+      setIsSignUp(false);
+      } catch (error) {
+        console.log(error)
+      }
+  }
+
+    const onLogin = async () => {
+      console.log("동작")
+      isSignUp ? (SignupState()) : (LoginState())
+    }
+    const inputEmailHandler = (event) => {
+      setUsername(event.target.value);
+    }
+
+    const inputPasswordHandler = (event) => {
+      setPassword(event.target.value);
     }
 
     return (
@@ -80,6 +126,8 @@ function Login({ modal, closeModal }) {
                 autoComplete="email"
                 label="이메일"
                 required
+                value={username}
+                onChange={inputEmailHandler}
                 fullWidth
               />
               <TextField
@@ -89,6 +137,8 @@ function Login({ modal, closeModal }) {
                 autoComplete="current-password"
                 label="패스워드"
                 type='Password'
+                value={password}
+                onChange={inputPasswordHandler}
               />
               <FormControlLabel style={{ color: "#3F9EF2" }}
                 control={<Checkbox value="remember" color="primary" />}

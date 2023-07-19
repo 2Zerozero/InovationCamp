@@ -31,7 +31,7 @@ function Nav({children}) {
       <S.NavBox>
         {/* 홈으로 */}
         <Link to="/">
-          <h4 style={{ fontFamily: "Caprasimo display" }}>항구</h4>
+        <fontText>항구</fontText>
         </Link>
               
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -40,8 +40,8 @@ function Nav({children}) {
               DarkMode
             </ThemeToggle>
           </div>
-          <S.StBtn onClick={openModal}>로그인</S.StBtn>
-          <button onClick={handleGoBack}>새 글 작성</button>
+          <div style={{ cursor: 'pointer' }}  onClick={handleGoBack}>새 글 작성</div>
+          <div style={{ cursor: 'pointer' }}  onClick={openModal}>로그인</div>
         </div>
 
       </S.NavBox>

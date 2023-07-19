@@ -30,6 +30,7 @@ function Cards({ id, title, isDone, content,createdDate,username,postImageUrl, l
 
   return (
     <S.BootstrapCard>
+       <HoverCard key={id} style={{ width: '15rem' }}>
     <Card key={id} style={{ width: '15rem' }}>
       
       <Card.Img variant="top" src={postImageUrl} style={{ objectFit: 'cover', width: '100%', height: '170px' }}/>
@@ -65,6 +66,7 @@ function Cards({ id, title, isDone, content,createdDate,username,postImageUrl, l
         <HeartLink ><AiFillHeart style={{ color: "red" }}/>{likeCount}</HeartLink>
       </S.CardBody>
     </Card >
+    </HoverCard>
 </S.BootstrapCard>
   );
 }
@@ -75,4 +77,11 @@ const HeartLink = styled(Card.Link)`
   display: flex;
   align-items: center;
   margin-top: 5px; /* 원하는 만큼의 여백 설정 */
+`;
+
+const HoverCard = styled(Card)`
+  &:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+  }
 `;
