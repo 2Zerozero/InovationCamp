@@ -50,8 +50,7 @@ function Detail() {
         }
     };
 
-    const handleCommentSubmit = async (e) => {
-        e.preventDefault();
+    const handleCommentSubmit = async () => {
         try {
             // 댓글 작성 요청
             const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
@@ -69,7 +68,7 @@ function Detail() {
             )
 
             // // 리패치
-            // refetch();
+            refetch();
 
             // 댓글 작성 후 폼 초기화
             setCommentText('');
