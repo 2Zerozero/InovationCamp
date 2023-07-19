@@ -6,6 +6,24 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Comment from '../../components/Comment/Comment';
 
+
+function getCookie(cookieName){
+    var cookieValue=null;
+    if(document.cookie){
+        var array=document.cookie.split((escape(cookieName)+'='));
+        if(array.length >= 2){
+            var arraySub=array[1].split(';');
+            cookieValue=unescape(arraySub[0]);
+        }
+    }
+    return cookieValue;
+  }
+  
+
+
+
+
+
 function Detail() {
     // useState
     const [isLiked, setIsLiked] = useState(false);
@@ -30,13 +48,16 @@ function Detail() {
     // 핸들러
     const handleLikeButton = async () => {
         try {
-            const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
+            const accessToken = getCookie("accessToken");
+            console.log(accessToken);
+            // const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
             await axios.post(
                 `http://52.79.242.223/api/posts/${id}/like`,
                 {},
                 {
                     headers: {
-                        Authorization: accessToken,
+                        Accept: "*/*",
+                        Authorization: `${accessToken}`,
                     },
                 }
             );
