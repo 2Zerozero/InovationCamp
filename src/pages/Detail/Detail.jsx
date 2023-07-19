@@ -50,7 +50,8 @@ function Detail() {
         }
     };
 
-    const handleCommentSubmit = async () => {
+    const handleCommentSubmit = async (e) => {
+        e.preventDefault();
         try {
             // 댓글 작성 요청
             const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
