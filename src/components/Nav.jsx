@@ -34,7 +34,7 @@ function Nav({children}) {
         <img
         src="/img/logo.png"
         alt="로고 이미지"
-        style={{ marginTop:'40px', width: '300px', height: '120px' }}
+        style={{ marginTop:'40px', width: '300px', height: '150px' }}
       />
         </Link>
               

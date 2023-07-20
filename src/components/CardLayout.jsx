@@ -83,6 +83,7 @@ function CardLayout({ isDone }) {
               postImageUrl={item.postImageUrl}
               likeCount={item.likeCount}
               commentList={item.commentList}
+              userIdenticonUrl={item.userIdenticonUrl}
               isDone={isDone}
             />
           );

@@ -3,7 +3,7 @@ import * as S from './style'
 import Nav from '../../components/Nav'
 import { useQuery } from 'react-query';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Comment from '../../components/Comment/Comment';
 
@@ -277,7 +277,19 @@ function Detail() {
                     )}
     
                     <S.User>
-                        <S.Icon />
+
+                    <Card.Img
+                variant="top"
+                src={cardData.userIdenticonUrl}
+                style={{
+                  objectFit: 'cover',
+                  width: '1cm',
+                  height: '1cm',
+                  borderRadius: '50%',
+                  border: '1px solid black',
+                  marginRight: '10px', 
+                }}
+              />
                         <div>{cardData.username}</div>
                     </S.User>
                 </S.ContentWrap>
@@ -303,6 +315,7 @@ function Detail() {
                                 id={comment.commentId}
                                 content={comment.content} 
                                 username={comment.username}
+                                userIdenticonUrl={comment.userIdenticonUrl}
                                 onDelete={() => handleCommentDelete(comment.commentId)}
                             />
                         ))}
