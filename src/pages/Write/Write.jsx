@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Nav from '../../components/Nav'
 import * as S from './style'
 import { useNavigate } from 'react-router-dom'
-import { FaBackspace } from "react-icons/fa";
 import axios from 'axios';
 import { useQueryClient } from 'react-query';
 import Drag from '../../components/Drag';
@@ -44,11 +43,7 @@ function Write() {
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
     };
-    
-    // 파일 선택
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
+
 
     // 내용 입력
     const handleContentChange = (e) => {
@@ -104,17 +99,15 @@ function Write() {
 
                 {/* 게시글 작성란 */}
                 <S.Form>
-                    
                     <input 
                         type='text'
                         value={title}
                         onChange={handleTitleChange}
                         placeholder='제목을 입력하세요.'
                     />
-                   
+                    
                     <Drag  files={file} setFiles={setFile}/>
 
-                    
                     <textarea
                         value={content}
                         onChange={handleContentChange}

@@ -5,7 +5,8 @@ import { delete_todo, update_todo } from "../redux/modules/todoSlice";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
 export const useCard = () => {
-  // 리액트 쿼리 관련 코드
+  // 리액트 쿼리 관련 코드\
+
   const { isLoading, isError, data } = useQuery("todos", getTodos);
 
   const [title, setTitle] = useState("");

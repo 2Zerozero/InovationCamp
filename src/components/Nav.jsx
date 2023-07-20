@@ -31,7 +31,11 @@ function Nav({children}) {
       <S.NavBox>
         {/* 홈으로 */}
         <Link to="/">
-        <fontText>항구</fontText>
+        <img
+        src="/img/logo.png"
+        alt="로고 이미지"
+        style={{ marginTop:'40px', width: '300px', height: '120px' }}
+      />
         </Link>
               
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -40,8 +44,8 @@ function Nav({children}) {
               DarkMode
             </ThemeToggle>
           </div>
-          <div style={{ cursor: 'pointer' }}  onClick={handleGoBack}>새 글 작성</div>
-          <div style={{ cursor: 'pointer' }}  onClick={openModal}>로그인</div>
+          <S.HoverNav  style={{ margin: '50px'}}onClick={handleGoBack}>New Post</S.HoverNav>
+          <S.HoverNav  onClick={openModal}>Login</S.HoverNav>
         </div>
 
       </S.NavBox>
