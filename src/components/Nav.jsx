@@ -23,8 +23,8 @@ function Nav({children}) {
   const navigate = useNavigate();
 
   // 뒤로가기
-  const handleGoBack = () => {
-    navigate('/api/posts');
+  const handleGoWrite = () => {
+    navigate('/write');
   };
   return (
     <>
@@ -44,8 +44,10 @@ function Nav({children}) {
               DarkMode
             </ThemeToggle>
           </div>
+
           <S.HoverNav  style={{ margin: '50px'}}onClick={handleGoBack}>New Post</S.HoverNav>
           <S.HoverNav  onClick={openModal}>Login</S.HoverNav>
+
         </div>
 
       </S.NavBox>

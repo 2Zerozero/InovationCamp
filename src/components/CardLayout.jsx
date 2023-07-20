@@ -22,7 +22,6 @@ function getCookie(cookieName){
 
 function CardLayout({ isDone }) {
   const { data } = useCard();
-  console.log(data)
   // DB connect Test
   const [datas, setDatas] = useState();
 
@@ -69,10 +68,9 @@ function CardLayout({ isDone }) {
 
   return (
     <div>
-      <S.CardLists> 
+      <S.CardLists>
+        {/* {datas && datas.map((item) =>  */}
         {data && data.content.map((item) => 
-        /*
-        */
         {
           return (
             <Cards
