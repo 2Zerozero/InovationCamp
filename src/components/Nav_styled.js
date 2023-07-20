@@ -27,8 +27,15 @@ const StBtn = styled.button`
   border: none;
 `;
 
-const fontText = styled.div`
-  font-family: "Giants-Inline";
+const HoverNav = styled.div`
+  cursor: pointer;
+  font-family: "UhBeeSe_hyun";
+  color: #26689f;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  &:hover {
+    transform: translateY(-10px);
+  }
 `;
 
-export { NavBox, StBtn, fontText };
+export { NavBox, StBtn, HoverNav };

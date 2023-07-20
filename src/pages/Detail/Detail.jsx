@@ -18,8 +18,8 @@ function getCookie(cookieName){
         }
     }
     return cookieValue;
-}
 
+  }
 
 function Detail() {
     // navigate
@@ -27,6 +27,60 @@ function Detail() {
     // useState
     const [isLiked, setIsLiked] = useState(false);
     const [commentText, setCommentText] = useState('');
+
+// -----------------------------------------게시물 수정----------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+    // 게시물 수정 상태 관리
+    const [isEditing, setIsEditing] = useState(false);
+    const [editedContent, setEditedContent] = useState('');
+    const [editedTitle, setEditedTitle] = useState('');
+
+    // 게시물 수정 버튼 클릭 시 호출되는 함수
+    const handleEditButtonClick = (cardData) => {
+        setIsEditing(true);
+        setEditedContent(cardData.content);
+        setEditedTitle(cardData.title);
+};
+    // 게시물 수정 완료 버튼 클릭 시 호출되는 함수
+    const handleEditComplete = async () => {
+        try {
+            const accessToken = getCookie("accessToken");
+            
+            const Data = new FormData();
+            Data.append("title", editedTitle);
+            Data.append("content", editedContent);
+    
+            await axios.put(
+                `http://52.79.242.223/api/posts/${id}`,
+                Data,
+                {
+                    headers: {
+                        Accept: "*/*",
+                        "Content-Type": "multipart/form-data", 
+                        Authorization: `${accessToken}`,
+                    },
+                }
+            );
+    
+            // 수정 완료 후 
+            refetch();
+            console.log('데이터 전송 성공');
+    
+            // 수정 상태 초기화
+            setIsEditing(false);
+            setEditedContent('');
+            setEditedTitle('');
+        } catch (error) {
+            console.log('게시물 수정 실패', error);
+           
+        }
+    };
+
+
+// ---------------------------------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------------------------------
+
+
     // 게시글 ID 조회
     const { id } = useParams();
 
@@ -49,7 +103,6 @@ function Detail() {
         try {
             const accessToken = getCookie("accessToken");
             console.log(accessToken);
-            // const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
             await axios.post(
                 `http://52.79.242.223/api/posts/${id}/like`,
                 {},
@@ -115,6 +168,7 @@ function Detail() {
             )
 
             // 리패치
+
             refetch();
 
             // 댓글 작성 후 폼 초기화
@@ -123,6 +177,7 @@ function Detail() {
             console.log('댓글 작성 실패', error);
         }
     }
+
 
     // 댓글 삭제 기능
     const handleCommentDelete = async (commentId) => {
@@ -147,36 +202,86 @@ function Detail() {
     return (
         <S.Wrap>
             <Nav />
-
-            <S.Container >
-
+            <S.Container>
                 {/* 상세페이지 타이틀 */}
-                <h1>{cardData.title}</h1>
+                <h1>
+                    {isEditing ? (
+                        <input
+                            type="text"
+                            value={editedTitle}
+                            onChange={(e) => setEditedTitle(e.target.value)}
+                        />
+                    ) : (cardData.title)}
+                </h1>
                 <S.Header>
                     <S.User>
+                  
                         <div>{cardData.username}</div>
                         <div>{cardData.createdDate}</div>
                         <button onClick={handlePostDelete}>삭제</button>
+
                     </S.User>
-                    <div>
-                    {/* 클릭 시 좋아요 처리 */}
+                    
+                   
+
+                    <div> 
+                        {/* 수정버튼 추가 */}
+                        <div style={{ display: "flex", marginBottom: "50px" }}>
+                        <button style={{ width: "100px" }} onClick={() => handleEditButtonClick(cardData)}>수정</button>
+                        {/* 수정 완료 버튼 */}
+                        {isEditing && (
+                            <button style={{ width: "100px", marginLeft: "20px" }} onClick={handleEditComplete}>수정 완료</button>
+                        )}
+                        </div>
+
+                        {/* 클릭 시 좋아요 처리 */}
                         <S.LikeButton onClick={handleLikeButton}>
-                        {isLiked ? '💗' : '🤍'}
+                            {isLiked ? '💗' : '🤍'}
                         </S.LikeButton>
                         {cardData.likeCount}
                     </div>
                 </S.Header>
+    
+                
+
 
                 {/* 상세페이지 게시물 */}
                 <S.ContentWrap>
-                    <img src={cardData.postImageUrl} alt="이미지" />
-                    <div>{cardData.content}</div>
+                    <img
+                        src={cardData.postImageUrl}
+                        alt="이미지"
+                        style={{
+                            maxWidth: "600px", 
+                            height: "auto",  
+                        }}
+                    />
+
+                    {/* 수정 상태일 때는 텍스트 에디터 */}
+                    {isEditing ? (
+                    <textarea
+                    value={editedContent}
+                    onChange={(e) => setEditedContent(e.target.value)}
+                    placeholder="게시물을 수정하세요."
+                    style={{
+                      width: "600px",
+                      minHeight: "100px",
+                      border: "1px solid #ccc",
+                      padding: "8px",
+                      borderRadius: "4px",
+                      outline: "none",
+                    }}
+                  />
+                    ) : (
+                        // 수정 상태가 아닐 때는 기존 내용
+                        <div>{cardData.content}</div>
+                    )}
+    
                     <S.User>
                         <S.Icon />
                         <div>{cardData.username}</div>
                     </S.User>
                 </S.ContentWrap>
-
+    
                 {/* 상세페이지 댓글영역 */}
                 <S.CommentWrap>
                     <div>총 댓글 갯수 {cardData.commentList.length}</div>
@@ -189,7 +294,7 @@ function Detail() {
                         />
                         <button onClick={handleCommentSubmit}>댓글 작성</button>
                     </S.Form>
-
+    
                     <S.Comments>
                         {/* 댓글 맵핑 */}
                         {cardData.commentList && cardData.commentList.map((comment) => (
@@ -203,10 +308,12 @@ function Detail() {
                         ))}
                     </S.Comments>
                 </S.CommentWrap>
-
+    
+                
             </S.Container>
         </S.Wrap>
     )
+    
 }
 
 export default Detail
