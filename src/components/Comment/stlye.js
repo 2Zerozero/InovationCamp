@@ -14,16 +14,12 @@ export const UserWrap = styled.div`
   align-items: center;
 
   button {
-    width: 40px;
+    width: 70px;
     height: 30px;
     margin-right: 20px;
     border: none;
     background: none;
     cursor: pointer;
-
-    &:hover {
-      border-bottom: 1px solid black;
-    }
   }
 `;
 
@@ -38,4 +34,16 @@ export const User = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(255, 255, 255, 0.9);
+  z-index: 1;
 `;

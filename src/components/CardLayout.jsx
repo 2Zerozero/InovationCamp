@@ -80,7 +80,6 @@ function CardLayout({ trending }) {
   return (
     <div>
       <S.CardLists>
-        {/* {datas && datas.map((item) =>  */}
         {datas && datas.content.map((item) => 
         {
           return (

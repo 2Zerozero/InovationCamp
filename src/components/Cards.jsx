@@ -34,8 +34,8 @@ function Cards({ postId, id, title, content,createdDate,username,postImageUrl, l
 
 
             <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-              <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
-              <ListGroup.Item>{commentList.length}개의 댓글</ListGroup.Item>
+              <ListGroup.Item style={{fontSize:'14px',marginTop:'10px'}} >{formattedCreatedDate}</ListGroup.Item>
+              <ListGroup.Item style={{fontSize:'14px',marginTop:'10px'}}>{commentList.length}개의 댓글</ListGroup.Item>
             </ListGroup>
 
             <S.CardBody style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>

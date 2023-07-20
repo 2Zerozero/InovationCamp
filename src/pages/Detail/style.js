@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, css } from "styled-components";
 
 // 페이지 사이즈
 export const Wrap = styled.div`
@@ -84,8 +84,28 @@ export const Form = styled.form`
     background-color: #26689f;
 
     &:hover {
-      background-color: rgb(87 223 168);
+      background-color: #3d84a8;
+      transform: translateY(-5px);
     }
+  }
+`;
+
+export const keyForm = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 40px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  background-color: #26689f;
+
+  &:hover {
+    background-color: #3d84a8;
+    transform: translateY(-5px);
   }
 `;
 
