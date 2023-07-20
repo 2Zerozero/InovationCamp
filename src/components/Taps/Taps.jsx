@@ -66,11 +66,13 @@ export default function BasicTabs() {
     
         </Tabs>
       </Box>
+
       <CustomTabPanel value={value} index={0}>
-      <CardLayout isDone={false} />  {/* 최신 탭에 카드 컴포넌트 추가 */}
+        <CardLayout trending={false} />  {/* 최신 탭에 카드 컴포넌트 추가 */}
       </CustomTabPanel> 
+
       <CustomTabPanel value={value} index={1}>
-        미정
+        <CardLayout trending={true} />
       </CustomTabPanel>
     
     </Box>

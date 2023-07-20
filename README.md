@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+ 이노베이션 캠프 미니 프로젝트 
+# ⚓ 항구 - 부트캠프 커뮤니티 사이트
+안녕하세요! 우리는 항해99에서 운영하는 이노베이션 캠프의 프론트엔드 2명, 백엔드 3명의 수강생으로 이루어진 미니 프로젝트 팀입니다. 이 프로젝트는 부트캠프 수강생들의 긴 여정을 헤쳐나가며 쉴 수 있는 쉼터같은 커뮤니티 사이트를 만드는 것이 목표입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 프로젝트 목표
+이 프로젝트의 주요 목표는 부트캠프 수강생들이 자유롭게 소통하고 정보를 공유할 수 있는 안전하고 따뜻한 공간을 제공하는 것입니다. 항해99의 수강생들은 어려운 과정을 함께 겪으며 친밀한 커뮤니티를 형성합니다. 이러한 소중한 연결을 온라인에서도 지속할 수 있도록 돕는 것이 우리의 목표입니다.
 
-## Available Scripts
+## 🌊 구현 기능
 
-In the project directory, you can run:
+### 페이지 모드
+5시 방향의 아이콘을 클릭하면, 페이지의 블랙 모드, 화이트 모드로 변경이 가능합니다.
+ - 블랙 모드
+ - 화이트 모드
 
-### `npm start`
+### 메인페이지
+ - 최신 : 최근 작성순으로 배치
+ - 트렌디 : 좋아요 갯수 순으로 배치
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 회원 서비스
+- 로그인
+- 회원가입
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 게시글
+- 작성
+- 삭제
+- 수정
+- 좋아요
 
-### `npm test`
+### 댓글
+- 작성
+- 삭제
+- 수정 - 구현은 성공했으나, 리 패치가 안됨.
+- 좋아요 - 구현실패
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 사용한 기술 그택
+ - ```React```
+ - ```ReactHooks```
+ - ```Redux```
+ - ```React-Router-Dom```
+ - ```ES6```
+ - ```Styled-components```
+ - ```Axios```

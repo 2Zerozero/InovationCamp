@@ -20,7 +20,7 @@ function getCookie(cookieName){
   return cookieValue;
 }
 
-function CardLayout({ isDone }) {
+function CardLayout({ trending }) {
   const { data } = useCard();
   // DB connect Test
   const [datas, setDatas] = useState();
@@ -28,17 +28,28 @@ function CardLayout({ isDone }) {
   useEffect( () => {
     const init = async () => {
       try {
+        let res;
         const accessToken = getCookie("accessToken");
         console.log(accessToken);
-        // const accessToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZWFtNmlkIiwiYXV0aCI6IlVTRVIiLCJleHAiOjE2ODk3Njg0NjcsImlhdCI6MTY4OTczMjQ2N30.-YseaCrTLhAdcYdaBe5E4964pHDQUJrLihES4uxRM9g"
-        const res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`, 
-      {
-        headers: {
-          Accept: "*/*",
-          Authorization: `${accessToken}`,
-        },
-      }
-      );
+        if(trending === false) {
+          res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts`,
+          {
+            headers: {
+              Accept: "*/*",
+              Authorization: `${accessToken}`,
+            },
+          })
+          console.log("포스트 받아오는중", res)
+        } else {
+          res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/trending`,
+          {
+            headers: {
+              Accept: "*/*",
+              Authorization: `${accessToken}`,
+            },
+          })
+          console.log("트렌딩 받아오는중", res)
+        }
 
       // 데이터 전송 성공 후 작업
       console.log('데이터 전송 성공');
@@ -63,14 +74,13 @@ function CardLayout({ isDone }) {
     }
     }
     init();
-  }, [])
+  }, [trending])
   //
 
   return (
     <div>
       <S.CardLists>
         {datas && datas.content.map((item) => 
-        // {data && data.content.map((item) => 
         {
           return (
             <Cards
@@ -84,7 +94,6 @@ function CardLayout({ isDone }) {
               likeCount={item.likeCount}
               commentList={item.commentList}
               userIdenticonUrl={item.userIdenticonUrl}
-              isDone={isDone}
             />
           );
         })}
