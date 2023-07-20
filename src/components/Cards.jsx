@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import formatTimeAgo from '../time';
 
 
-function Cards({ postId, id, title, isDone, content,createdDate,username,postImageUrl, likeCount, commentList }) {
+function Cards({ postId, id, title, isDone, content,createdDate,username,postImageUrl, likeCount, commentList,userIdenticonUrl }) {
 
 
   const formattedCreatedDate = formatTimeAgo(createdDate);
@@ -42,7 +42,7 @@ function Cards({ postId, id, title, isDone, content,createdDate,username,postIma
               <div style={{display: 'flex', alignItems: 'center'}}>
             <Card.Img
                 variant="top"
-                src={postImageUrl}
+                src={userIdenticonUrl}
                 style={{
                   objectFit: 'cover',
                   width: '1cm',

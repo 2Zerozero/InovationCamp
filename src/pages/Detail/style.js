@@ -8,16 +8,15 @@ export const Wrap = styled.div`
 
 // 상세 페이지
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 
-    h1 {
-        font-size: 40px;
-        font-weight: 600;
-    }
-`
-
+  h1 {
+    font-size: 40px;
+    font-weight: 600;
+  }
+`;
 
 // 헤더
 export const Header = styled.div`
