@@ -22,7 +22,7 @@ function Nav({children}) {
   // navigate
   const navigate = useNavigate();
 
-  // 뒤로가기
+  // 글 쓰기
   const handleGoWrite = () => {
     navigate('/write');
   };
@@ -45,7 +45,7 @@ function Nav({children}) {
             </ThemeToggle>
           </div>
 
-          <S.HoverNav  style={{ margin: '50px'}}onClick={handleGoBack}>New Post</S.HoverNav>
+          <S.HoverNav  style={{ margin: '50px'}}onClick={handleGoWrite}>New Post</S.HoverNav>
           <S.HoverNav  onClick={openModal}>Login</S.HoverNav>
 
         </div>
