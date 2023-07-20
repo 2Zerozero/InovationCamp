@@ -17,6 +17,17 @@ const instanceAxios = axios.create({
   // baseURL : "http://1.244.223.183"
 })
 
+// 유저명 유효성 검사 함수
+const isValidUsername = (username) => {
+  const regex = /^(?=.*[0-9])(?=.*[a-z])[a-z0-9]{4,10}$/;
+  return regex.test(username);
+};
+
+// 비밀번호 유효성 검사 함수
+const isValidPassword = (password) => {
+  const regex = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()\-+])[a-zA-Z0-9!@#$%^&*()\-+]{8,15}$/;
+  return regex.test(password);
+};
 
 function Login({ modal, closeModal }) {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -73,10 +84,21 @@ function Login({ modal, closeModal }) {
       }
   }
 
-    const onLogin = async () => {
-      console.log("동작")
-      isSignUp ? (SignupState()) : (LoginState())
+  const onLogin = async () => {
+    if (!isValidUsername(username)) {
+      alert("유저명은 숫자와 영소문자로만 구성하되 각 1개 이상을 포함해야 합니다. 길이는 4이상 10이하이어야 합니다.");
+      return;
     }
+
+    if (!isValidPassword(password)) {
+      alert("비밀번호는 숫자, 알파벳, 특수문자 !@#$%^&*()-+로만 구성하되 각 1개 이상을 포함해야 합니다. 길이는 8이상 15이하이어야 합니다.");
+      return;
+    }
+
+    // 유효성 검사를 통과한 경우 로그인 또는 회원가입 처리를 수행합니다.
+    isSignUp ? SignupState() : LoginState();
+  };
+
     const inputEmailHandler = (event) => {
       setUsername(event.target.value);
     }

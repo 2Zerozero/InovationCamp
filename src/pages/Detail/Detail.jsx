@@ -215,30 +215,47 @@ function Detail() {
                 </h1>
                 <S.Header>
                     <S.User>
-                  
+                    <Card.Img
+                variant="top"
+                src={cardData.userIdenticonUrl}
+                style={{
+                  objectFit: 'cover',
+                  width: '1cm',
+                  height: '1cm',
+                  borderRadius: '50%',
+                  border: '1px solid black',
+                  marginRight: '10px', 
+                }}
+              />
                         <div>{cardData.username}</div>
-                        <div>{cardData.createdDate}</div>
-                        <button onClick={handlePostDelete}>삭제</button>
-
+                        {/* <div>{cardData.createdDate}</div> */}
+                        <div>
+                        
+                        </div>
                     </S.User>
                     
                    
 
-                    <div> 
-                        {/* 수정버튼 추가 */}
-                        <div style={{ display: "flex", marginBottom: "50px" }}>
-                        <button style={{ width: "100px" }} onClick={() => handleEditButtonClick(cardData)}>수정</button>
-                        {/* 수정 완료 버튼 */}
-                        {isEditing && (
-                            <button style={{ width: "100px", marginLeft: "20px" }} onClick={handleEditComplete}>수정 완료</button>
-                        )}
-                        </div>
+                    <div>
+                        <div style={{ display: "flex", gap: '10px' }}>
+                            <S.keyForm style={{ width: "100px" }}onClick={handlePostDelete}>삭제</S.keyForm>
+                            {/* 수정버튼 추가 */}
+                            <div style={{ display: "flex", marginBottom: "50px" }}>
+                            <S.keyForm style={{ width: "100px" }} onClick={() => handleEditButtonClick(cardData)}>수정</S.keyForm>
+                            {/* 수정 완료 버튼 */}
+                            {isEditing && (
+                                <S.keyForm style={{ width: "100px", marginLeft: "20px" }} onClick={handleEditComplete}>수정 완료</S.keyForm>
+                            )}
+                            </div>
+                        
 
+                       
                         {/* 클릭 시 좋아요 처리 */}
-                        <S.LikeButton onClick={handleLikeButton}>
+                        <S.LikeButton style={{ fontSize: '30px' ,marginBottom: '80px'}} onClick={handleLikeButton}>
                             {isLiked ? '💗' : '🤍'}
                         </S.LikeButton>
-                        {cardData.likeCount}
+                        <div style={{ fontSize: '20px'}}>{cardData.likeCount}</div>
+                        </div>
                     </div>
                 </S.Header>
     
@@ -276,22 +293,6 @@ function Detail() {
                         <div>{cardData.content}</div>
                     )}
     
-                    <S.User>
-
-                    <Card.Img
-                variant="top"
-                src={cardData.userIdenticonUrl}
-                style={{
-                  objectFit: 'cover',
-                  width: '1cm',
-                  height: '1cm',
-                  borderRadius: '50%',
-                  border: '1px solid black',
-                  marginRight: '10px', 
-                }}
-              />
-                        <div>{cardData.username}</div>
-                    </S.User>
                 </S.ContentWrap>
     
                 {/* 상세페이지 댓글영역 */}

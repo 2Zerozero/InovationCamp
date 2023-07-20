@@ -69,8 +69,8 @@ function CardLayout({ isDone }) {
   return (
     <div>
       <S.CardLists>
-        {/* {datas && datas.map((item) =>  */}
-        {data && data.content.map((item) => 
+        {datas && datas.content.map((item) => 
+        // {data && data.content.map((item) => 
         {
           return (
             <Cards
