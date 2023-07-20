@@ -117,7 +117,7 @@ function Login({ modal, closeModal }) {
                 <Typography style={{ color: "#3F9EF2" }} component="h1" variant="h5">
                 항구
               </Typography>
-              <Typography style={{ color: "#3F9EF2" }} component="h1" variant="h5">
+              <Typography style={{ color: "#3F9EF2", margin: "20px 0px" }} component="h1" variant="h5">
                 {isSignUp ? "회원가입" : "로그인"}
               </Typography>
               <TextField
@@ -139,10 +139,6 @@ function Login({ modal, closeModal }) {
                 type='Password'
                 value={password}
                 onChange={inputPasswordHandler}
-              />
-              <FormControlLabel style={{ color: "#3F9EF2" }}
-                control={<Checkbox value="remember" color="primary" />}
-                label="기억해줘!"
               />
 
               <Button
@@ -166,15 +162,6 @@ function Login({ modal, closeModal }) {
                 onClick={toggleSignUp}
               >
                 {isSignUp ? "로그인 하기" : "회원가입 하기"}
-              </Button>
-              <Button
-                style={{ backgroundColor: "#3F9EF2" }}
-                type='submit'
-                fullWidth
-                variant="contained"
-                sx={{ mt: 1 }}
-              >
-                패스워드 까먹음?
               </Button>
               </Box>
             </Container>

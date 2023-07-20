@@ -39,7 +39,7 @@ function CardLayout({ trending }) {
               Authorization: `${accessToken}`,
             },
           })
-          console.log("트렌딩 받아오는중", res)
+          console.log("포스트 받아오는중", res)
         } else {
           res = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/posts/trending`,
           {
