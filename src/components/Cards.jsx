@@ -5,29 +5,15 @@ import {AiFillHeart} from "react-icons/ai"
 import * as S from "./Cards_styled"
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom'
+import formatTimeAgo from '../time';
 
-function Cards({ postId, id, title, isDone, content,createdDate,username,postImageUrl, likeCount }) {
 
-  function formatTimeAgo(createdDate) {
-    const currentDate = new Date(); // 현재 시간
-    const diffInMilliseconds = currentDate - new Date(createdDate); // 현재 시간과 작성 시간의 차이 (밀리초)
-  
-    // 시간 간격 계산
-    const diffInSeconds = Math.floor(diffInMilliseconds / 1000); // 초 단위
-    const diffInMinutes = Math.floor(diffInSeconds / 60); // 분 단위
-    const diffInHours = Math.floor(diffInMinutes / 60); // 시간 단위
-    const diffInDays = Math.floor(diffInHours / 24); // 일 단위
-  
-    if (diffInDays >= 1) {
-      return `${diffInDays}일 전`;
-    } else if (diffInHours >= 1) {
-      return `${diffInHours}시간 전`;
-    } else {
-      return `${diffInMinutes}분 전`;
-    }
-  }
-  
+function Cards({ postId, id, title, isDone, content,createdDate,username,postImageUrl, likeCount, commentList }) {
+
+
   const formattedCreatedDate = formatTimeAgo(createdDate);
+  
+  
 
   return (
     <S.BootstrapCard>
@@ -49,7 +35,7 @@ function Cards({ postId, id, title, isDone, content,createdDate,username,postIma
 
             <ListGroup style={{ fontSize:'10px', marginBottom: '30px',display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
               <ListGroup.Item>{formattedCreatedDate}</ListGroup.Item>
-              <ListGroup.Item>0개의 댓글</ListGroup.Item>
+              <ListGroup.Item>{commentList.length}개의 댓글</ListGroup.Item>
             </ListGroup>
 
             <S.CardBody style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -75,6 +61,7 @@ function Cards({ postId, id, title, isDone, content,createdDate,username,postIma
       </HoverCard>
   </S.BootstrapCard>
   );
+  
 }
 
 export default Cards;

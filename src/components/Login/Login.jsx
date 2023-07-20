@@ -121,10 +121,10 @@ function Login({ modal, closeModal }) {
                 {isSignUp ? "회원가입" : "로그인"}
               </Typography>
               <TextField
-                name='email'
+                name='id'
                 autoFocus
-                autoComplete="email"
-                label="이메일"
+                autoComplete="current-id"
+                label="아이디"
                 required
                 value={username}
                 onChange={inputEmailHandler}
