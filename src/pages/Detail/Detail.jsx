@@ -216,17 +216,17 @@ function Detail() {
                 <S.Header>
                     <S.User>
                     <Card.Img
-                variant="top"
-                src={cardData.userIdenticonUrl}
-                style={{
-                  objectFit: 'cover',
-                  width: '1cm',
-                  height: '1cm',
-                  borderRadius: '50%',
-                  border: '1px solid black',
-                  marginRight: '10px', 
-                }}
-              />
+                        variant="top"
+                        src={cardData.userIdenticonUrl}
+                        style={{
+                            objectFit: 'cover',
+                            width: '1cm',
+                            height: '1cm',
+                            borderRadius: '50%',
+                            border: '1px solid black',
+                            marginRight: '10px', 
+                        }}
+                    />
                         <div>{cardData.username}</div>
                         {/* <div>{cardData.createdDate}</div> */}
                         <div>
@@ -234,27 +234,24 @@ function Detail() {
                         </div>
                     </S.User>
                     
-                   
+
 
                     <div>
                         <div style={{ display: "flex", gap: '10px' }}>
-                            <S.keyForm style={{ width: "100px" }}onClick={handlePostDelete}>삭제</S.keyForm>
                             {/* 수정버튼 추가 */}
-                            <div style={{ display: "flex", marginBottom: "50px" }}>
-                            <S.keyForm style={{ width: "100px" }} onClick={() => handleEditButtonClick(cardData)}>수정</S.keyForm>
+                            <div style={{ display: "flex",gap: "10px" ,margin: "auto" }}>
+                                <S.keyForm style={{ width: "100px" }}onClick={handlePostDelete}>삭제</S.keyForm>
+                                <S.keyForm style={{ width: "100px" }} onClick={() => handleEditButtonClick(cardData)}>수정</S.keyForm>
                             {/* 수정 완료 버튼 */}
                             {isEditing && (
                                 <S.keyForm style={{ width: "100px", marginLeft: "20px" }} onClick={handleEditComplete}>수정 완료</S.keyForm>
                             )}
                             </div>
-                        
-
-                       
-                        {/* 클릭 시 좋아요 처리 */}
-                        <S.LikeButton style={{ fontSize: '30px' ,marginBottom: '80px'}} onClick={handleLikeButton}>
-                            {isLiked ? '💗' : '🤍'}
-                        </S.LikeButton>
-                        <div style={{ fontSize: '20px'}}>{cardData.likeCount}</div>
+                            {/* 클릭 시 좋아요 처리 */}
+                            <S.LikeButton style={{ fontSize: '30px'}} onClick={handleLikeButton}>
+                                {isLiked ? '💗' : '🤍'}
+                            </S.LikeButton>
+                            <div style={{ fontSize: '20px'}}>{cardData.likeCount}</div>
                         </div>
                     </div>
                 </S.Header>
