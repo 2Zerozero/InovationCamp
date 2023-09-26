@@ -1,0 +1,99 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0px 20px;
+  border: 1px solid #ddd;
+}
+
+/* todolist 생성 */
+.createTodo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: #eeeeee;
+}
+
+.createTodo div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.createTodo button {
+  background-color: teal;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  height: 40px;
+  width: 140px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input {
+  width: 240px;
+  height: 40px;
+  padding: 0px 12px;
+  border: none;
+  border-radius: 12px;
+}
+
+/* 할일 */
+.working {
+  display: flex;
+  flex-direction: column;
+}
+
+/* todo 목록 */
+.todos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.todo {
+  width: 270px;
+  padding: 12px 24px 24px;
+  border: 4px solid teal;
+  border-radius: 12px;
+}
+
+.todo div, h2 {
+  word-break: break-word;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.buttons button {
+  width: 130px;
+  height: 40px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.delete {
+  border: 2px solid red;
+}
+
+.clear {
+  border: 2px solid green;
+}
